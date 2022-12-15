@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_totally_blurred_"
+    tools:context=".Setting"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/settingsIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        app:srcCompat="@drawable/setting_icon"
+        android:background="@drawable/darkcircle"/>
+
+    <EditText
+        android:id="@+id/registerUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="20dp"
+        android:autofillHints="username"
+        android:drawableEnd="@drawable/ic_baseline_person_24"
+        android:hint="@string/newusername"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF" />
+    <Button
+        android:id="@+id/confirmNewUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginVertical="20dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="@string/confirmNewUser"
+        android:textColor="#000000"
+        app:rippleColor="#8A8A8A" />
+
+    <EditText
+        android:id="@+id/newPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="40dp"
+        android:autofillHints="password"
+        android:drawableEnd="@drawable/ic_baseline_password_24"
+        android:hint="@string/newPassword"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textColor="@color/white"
+        android:textColorHint="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/newPassword2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginVertical="20dp"
+        android:autofillHints="password"
+        android:drawableEnd="@drawable/ic_baseline_password_24"
+        android:hint="@string/confirmNewPassword"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textColorHint="#FFFFFF"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerPassword" />
+    <Button
+        android:id="@+id/confirmNewPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="@string/confirmPassword"
+        android:textColor="#000000"
+        app:rippleColor="#8A8A8A" />
+
+
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
