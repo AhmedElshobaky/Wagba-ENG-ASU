@@ -32,6 +32,4 @@ local.properties
 .gradle/*
 .idea/*
 /build
-
-
-/app/src/debug/orders-playstore.png
+/app/src/debug/*
