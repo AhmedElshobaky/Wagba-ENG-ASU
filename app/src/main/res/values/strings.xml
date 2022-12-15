@@ -1,0 +1,106 @@
+<resources>
+    <string name="app_name">Wagba</string>
+    <!-- Login Page -->
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forgotPassword"><u>Forgot Password?</u></string>
+    <string name="login">Login</string>
+    <string name="logintoregisterscreen"><u>Register now</u></string>
+
+
+    <!--  Register Page -->
+    <string name="username">Username</string>
+    <string name="confirmpassword">Confirm Password</string>
+    <string name="register">Register</string>
+    <string name="registertologinscreen"><u>Login now</u></string>
+
+    <!-- Delivery Page -->
+
+    <!--  Restaurant in Delivery Page-->
+    <string name="featured">Featured Restaurants</string>
+    <string name="restaurantsTxt">Restaurants and Coffee shops</string>
+    <string name="mcdonalds">McDonald\'s</string>
+    <string name="papajohns">Papa Johns</string>
+    <string name="starbucks">Starbucks</string>
+    <string name="sadam">Sadam fool &amp; falafel</string>
+    <string name="cilantro">Cilantro</string>
+    <string name="chickenfila">Chicken FilA</string>
+    <string name="kfc">KFC</string>
+    <string name="kosharyeltahrir">Koshary Tahrir</string>
+    <string name="zainelsham">Zain Elsham</string>
+    <string name="dunkindonuts">Dunkin Donuts</string>
+
+
+    <!--  Gate Spinner in Delivery Page -->
+    <string name="deliverTxt">Deliver to</string>
+
+    <!-- Food RecyclerView in Delivery Page -->
+    <string name="foodCategories">Categories</string>
+    <string name="pizza">Pizza</string>
+    <string name="sandwich">Sandwich</string>
+    <string name="shawarma">Shawarma</string>
+    <string name="noodles">Noodles</string>
+    <string name="bakery">Bakery</string>
+    <string name="coffee">Coffee</string>
+    <string name="hamburger">hamburger</string>
+
+    <!-- Search view in Delivery page -->
+    <string name="searchHint">Find a Restaurant</string>
+
+    <!-- Restaurant Dishes Page -->
+    <string name="DishesStr">Dishes</string>
+    <string name="basketBtn">Basket</string>
+    <string name="priceStr">Price: </string>
+
+    <!-- Mcdonalds Dishes -->
+    <string name="mc_dish1">Share Box</string>
+    <string name="mc_dish2">Double Mc-Royal</string>
+    <string name="mc_dish3">Big Mac</string>
+    <string name="mc_dish4">Sunday</string>
+
+    <!-- Navigation Bar -->
+    <string name="deliveryBottomNav">Delivery</string>
+    <string name="ordersBottomNav">Orders</string>
+    <string name="settingsBottomNav">Settings</string>
+
+    <!-- Basket Fragment -->
+    <string name="orderIdTxt">ORDER: XXXXXX</string>
+    <string name="restaurantNameBasketStr">Restaurant</string>
+    <string name="totalBasketStr">Total: </string>
+    <string name="gateBasketStr">Choose a gate: </string>
+    <string name="timeBasketStr">Choose time: </string>
+    <string name="placeOrderBasketStr">Place Order</string>
+
+    <string-array name="gates">
+        <item>Gate 3</item>
+        <item>Gate 4</item>
+    </string-array>
+    <string-array name="times">
+        <item>Noon delivery</item>
+        <item>3:00 pm delivery</item>
+    </string-array>
+
+
+    <string name="testRestaurantBasketStr">McDonald\'s</string>
+    <string name="testItemBasketStr">Item 1</string>
+    <string name="testPriceBasketStr"> 22.23 egp</string>
+
+    <string name="testItem2BasketStr">Item 2</string>
+    <string name="testPrice2BasketStr"> 99.12 egp</string>
+    <string name="testPrice3BasketStr">121.35 egp</string>
+
+    <string name="orderDetails">Order ID: XXXXXX\nTotal: 000.00 egp</string>
+    <string name="placedOrder">placed</string>
+    <string name="onDeliveryOrder">on delivery</string>
+    <string name="deliveredOrder">delivered</string>
+
+    <!-- Confirm password -->
+    <string name="newusername">New Username</string>
+    <string name="confirmNewUser">Confirm Username</string>
+    <string name="newPassword">New Password</string>
+    <string name="confirmNewPassword">Confirm New Password</string>
+    <string name="confirmPassword">Confirm Password</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
