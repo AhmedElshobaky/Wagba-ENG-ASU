@@ -12,14 +12,15 @@
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/settingsIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:padding="15dp"
         android:layout_marginTop="100dp"
         app:srcCompat="@drawable/setting_icon"
         android:background="@drawable/darkcircle"/>
 
     <EditText
-        android:id="@+id/registerUsername"
+        android:id="@+id/newUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="50dp"
@@ -32,55 +33,84 @@
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF" />
     <Button
-        android:id="@+id/confirmNewUser"
+        android:id="@+id/updateUsernameBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="50dp"
-        android:layout_marginVertical="20dp"
         android:backgroundTint="#FFFFFF"
         android:text="@string/confirmNewUser"
         android:textColor="#000000"
         app:rippleColor="#8A8A8A" />
 
     <EditText
-        android:id="@+id/newPassword"
+        android:id="@+id/newPhone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="50dp"
-        android:layout_marginTop="40dp"
-        android:autofillHints="password"
-        android:drawableEnd="@drawable/ic_baseline_password_24"
-        android:hint="@string/newPassword"
-        android:inputType="textPassword"
+        android:layout_marginTop="10dp"
+        android:drawableEnd="@drawable/ic_baseline_phone_24"
+        android:hint="@string/newPhone"
         android:minHeight="48dp"
         android:textColor="@color/white"
-        android:textColorHint="#FFFFFF" />
-
-    <EditText
-        android:id="@+id/newPassword2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="50dp"
-        android:layout_marginVertical="20dp"
-        android:autofillHints="password"
-        android:drawableEnd="@drawable/ic_baseline_password_24"
-        android:hint="@string/confirmNewPassword"
-        android:inputType="textPassword"
-        android:minHeight="48dp"
         android:textColorHint="#FFFFFF"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerPassword" />
+        android:inputType="phone"
+        android:autofillHints="phone"
+        />
     <Button
-        android:id="@+id/confirmNewPassword"
+        android:id="@+id/updatePhoneBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="50dp"
         android:backgroundTint="#FFFFFF"
-        android:text="@string/confirmPassword"
+        android:text="@string/updatePhone"
         android:textColor="#000000"
         app:rippleColor="#8A8A8A" />
+    <EditText
+        android:id="@+id/newPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="10dp"
+        android:drawableEnd="@drawable/ic_baseline_password_24"
+        android:hint="@string/newPassword"
+        android:minHeight="48dp"
+        android:textColor="@color/white"
+        android:inputType="textPassword"
+        android:textColorHint="#FFFFFF"
+        android:autofillHints="password" />
+    <EditText
+        android:id="@+id/confirmNewPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        android:drawableEnd="@drawable/ic_baseline_password_24"
+        android:hint="@string/confirmNewPassword"
+        android:minHeight="48dp"
+        android:textColor="@color/white"
+        android:inputType="textPassword"
+        android:textColorHint="#FFFFFF"
+        android:autofillHints="password" />
+    <Button
+        android:id="@+id/updatePasswordBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="@string/updatePassword"
+        android:textColor="#000000"
+        app:rippleColor="#8A8A8A" />
+
+    <Button
+        android:id="@+id/logoutBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="@string/logoutTxt"
+        android:textColor="#000000"
+        app:rippleColor="#8A8A8A" />
+
 
 
 

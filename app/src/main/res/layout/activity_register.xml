@@ -27,7 +27,7 @@ tools:context=".MainActivity">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="50dp"
-        android:layout_marginBottom="112dp"
+        android:layout_marginBottom="136dp"
         android:autofillHints="username"
         android:drawableEnd="@drawable/ic_baseline_person_24"
         android:hint="@string/username"
@@ -37,6 +37,7 @@ tools:context=".MainActivity">
         android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/registerPassword"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -44,7 +45,7 @@ tools:context=".MainActivity">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="50dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="76dp"
         android:autofillHints="emailAddress"
         android:drawableEnd="@drawable/ic_baseline_mail_24"
         android:hint="@string/email"
@@ -54,6 +55,25 @@ tools:context=".MainActivity">
         android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/registerPassword"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/registerPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginBottom="12dp"
+        android:autofillHints="phone"
+        android:drawableEnd="@drawable/ic_baseline_phone_24"
+        android:hint="@string/registerPhone"
+        android:inputType="phone"
+        android:minHeight="48dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/registerPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.50"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -80,15 +100,16 @@ tools:context=".MainActivity">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="50dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:autofillHints=""
         android:drawableEnd="@drawable/ic_baseline_password_24"
         android:hint="@string/confirmpassword"
         android:inputType="textPassword"
         android:minHeight="48dp"
-        android:textColorHint="#FFFFFF"
         android:textColor="@color/white"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerPassword" />
 

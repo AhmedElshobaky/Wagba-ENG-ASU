@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity(){
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.delivery ->  replaceFragment(Delivery())
-                R.id.order ->  replaceFragment(Order())
+                R.id.order ->  replaceFragment(OrderFragment())
                 R.id.settings ->  replaceFragment(Setting())
             else ->{}
             }

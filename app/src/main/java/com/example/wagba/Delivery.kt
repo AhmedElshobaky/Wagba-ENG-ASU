@@ -1,19 +1,23 @@
 package com.example.wagba
 
+import android.content.ContentValues.TAG
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.SearchView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
 import com.example.wagba.dish.Dish
-import com.example.wagba.dish.DishAdapter
 
 
 import com.example.wagba.restaurant.Restaurant
@@ -22,6 +26,8 @@ import com.example.wagba.restaurant.RestaurantAdapter
 
 import com.example.wagba.food.Food
 import com.example.wagba.food.FoodAdapter
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -38,19 +44,29 @@ import kotlin.collections.ArrayList
 
 class Delivery : Fragment() , AdapterView.OnItemSelectedListener {
 
+
     private lateinit var featuredrestaurantRV: RecyclerView
-    private lateinit var featuredRestaurantList:ArrayList<Restaurant>
+    private var featuredRestaurantsList = mutableListOf<Restaurant>()
     private lateinit var featuredrestaurantAdapter: FeaturedRestaurantAdapter
 
     private lateinit var restaurantRV: RecyclerView
-    private lateinit var restaurantList:ArrayList<Restaurant>
-    private lateinit var restaurantAdapter: RestaurantAdapter
+    private lateinit var restaurantAdapter:RestaurantAdapter
 
     private lateinit var foodRV: RecyclerView
     private lateinit var foodList:ArrayList<Food>
     private lateinit var foodAdapter: FoodAdapter
 
     private lateinit var searchV: SearchView
+    private lateinit var welcomeUserTv: TextView
+
+    private var restaurantsList = mutableListOf<Restaurant>()
+
+
+    private val database = FirebaseDatabase.getInstance("https://wagba-db-default-rtdb.firebaseio.com/")
+    private val firebaseAuth = FirebaseAuth.getInstance()
+    private val restaurantRef = database.getReference("Restaurant")
+    private var msg = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,18 +93,48 @@ class Delivery : Fragment() , AdapterView.OnItemSelectedListener {
         super.onViewCreated(view, savedInstanceState)
 
         searchV = view.findViewById(R.id.searchView)
-        foodRV = view.findViewById(R.id.foodRecyclerView)
+        welcomeUserTv = view.findViewById(R.id.welcomeUser)
+        // potential filtering using categories
+        //foodRV = view.findViewById(R.id.foodRecyclerView)
         featuredrestaurantRV = view.findViewById(R.id.featuredRestaurantRecyclerView)
         restaurantRV = view.findViewById(R.id.restaurantRecyclerView)
 
 
 
 
+        setGreetingMsg()
         searchV_init()
-        foodRV_init()
+        //foodRV_init()
         featuredrestaurantRV_init()
         restaurantRV_init()
 
+    }
+
+    private fun setGreetingMsg() {
+
+        val calendar = Calendar.getInstance()
+        val timeOfDay = calendar.get(Calendar.HOUR_OF_DAY)
+        val partMsg =  when (timeOfDay) {
+            in 0..11 -> "Good Morning"
+            in 12..15 -> "Good Afternoon"
+            in 16..20 -> "Good Evening"
+            in 21..23 -> "Hello"
+            else -> "Hello"
+        }
+
+        val userId = firebaseAuth.currentUser!!.uid
+        val userRef = database.getReference("users").child(userId)
+        userRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val username = snapshot.child("username").value.toString()
+                msg = "$partMsg, $username!"
+                welcomeUserTv.text = msg
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w(TAG, "Failed to read value.", error.toException())
+            }
+        })
     }
 
     private fun searchV_init(){
@@ -97,7 +143,6 @@ class Delivery : Fragment() , AdapterView.OnItemSelectedListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 return false
             }
-
             override fun onQueryTextChange(p0: String): Boolean {
                 filter(p0)
                 return false
@@ -105,29 +150,22 @@ class Delivery : Fragment() , AdapterView.OnItemSelectedListener {
 
         })
     }
-
     private fun filter(text: String) {
         // creating a new array list to filter our data.
         val filteredlist: ArrayList<Restaurant> = ArrayList()
 
         // running a for loop to compare elements.
-        for (item in restaurantList) {
+        for (item in restaurantsList) {
             // checking if the entered string matched with any item of our recycler view.
-            if (item.restaurantName.lowercase().contains(text.lowercase())) {
-                // if the item is matched we are
-                // adding it to our filtered list.
+            if (item.Name.lowercase().contains(text.lowercase())) {
                 filteredlist.add(item)
             }
         }
         if (filteredlist.isEmpty()) {
-            // if no item is added in filtered list we are
-            // displaying a toast message as no data found.
             Toast.makeText(requireActivity(), "No Restaurants Found..", Toast.LENGTH_SHORT).show()
 
         } else {
-            // at last we are passing that filtered
-            // list to our adapter class.
-            restaurantAdapter.filterList(filteredlist)
+           restaurantAdapter.filterList(filteredlist)
         }
     }
 
@@ -137,11 +175,7 @@ class Delivery : Fragment() , AdapterView.OnItemSelectedListener {
         val snapHelper:SnapHelper = LinearSnapHelper()
         snapHelper.attachToRecyclerView(restaurantRV)
 
-        restaurantList = ArrayList()
-        addRestaurantToList()
-
-        restaurantAdapter = RestaurantAdapter(restaurantList)
-        restaurantRV.adapter = restaurantAdapter
+        addRestaurantFromDB()
     }
 
 
@@ -150,31 +184,61 @@ class Delivery : Fragment() , AdapterView.OnItemSelectedListener {
         featuredrestaurantRV.layoutManager = LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false)
         val snapHelper:SnapHelper = LinearSnapHelper()
         snapHelper.attachToRecyclerView(featuredrestaurantRV)
-
-        featuredRestaurantList = ArrayList()
-        addFeaturedRestaurantToList()
-
-        featuredrestaurantAdapter = FeaturedRestaurantAdapter(featuredRestaurantList)
-        featuredrestaurantRV.adapter = featuredrestaurantAdapter
+        addFeaturedRestaurantFromDB()
     }
-    private fun addFeaturedRestaurantToList(){
-        featuredRestaurantList.add(Restaurant(R.drawable.mcdonalds_offer,this.resources.getString(R.string.mcdonalds)))
-        featuredRestaurantList.add(Restaurant(R.drawable.papajohns_offer,this.resources.getString(R.string.papajohns)))
-        featuredRestaurantList.add(Restaurant(R.drawable.starbucks_offer,this.resources.getString(R.string.starbucks)))
-        featuredRestaurantList.add(Restaurant(R.drawable.sadam_offer,this.resources.getString(R.string.sadam)))
-    }
-    private fun addRestaurantToList(){
-        restaurantList.add(Restaurant(R.drawable.mcdonalds_logo_504,this.resources.getString(R.string.mcdonalds)))
-        restaurantList.add(Restaurant(R.drawable.papajohns_logo_504,this.resources.getString(R.string.papajohns)))
-        restaurantList.add(Restaurant(R.drawable.starbucks_logo_504,this.resources.getString(R.string.starbucks)))
-        restaurantList.add(Restaurant(R.drawable.sadam_logo_504,this.resources.getString(R.string.sadam)))
-        restaurantList.add(Restaurant(R.drawable.cilantro_logo_504,this.resources.getString(R.string.cilantro)))
-        restaurantList.add(Restaurant(R.drawable.dd_logo_504,this.resources.getString(R.string.dunkindonuts)))
-        restaurantList.add(Restaurant(R.drawable.kfc_logo_504,this.resources.getString(R.string.kfc)))
-        restaurantList.add(Restaurant(R.drawable.kosharyeltahrir_logo_504,this.resources.getString(R.string.kosharyeltahrir)))
-        restaurantList.add(Restaurant(R.drawable.zainelsham_logo_504,this.resources.getString(R.string.zainelsham)))
 
+    private fun addFeaturedRestaurantFromDB(){
+        restaurantRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val featuredRestaurants = dataSnapshot.children.mapNotNull { snapshot ->
+                    val featuredRestaurant = snapshot.getValue(Restaurant::class.java)
+                    if (featuredRestaurant != null && featuredRestaurant.featured) {
+                            featuredRestaurant.restaurantId = snapshot.key.toString()
+                        featuredRestaurant
+                        }else{
+                            null
+                        }
+                }
+                Log.d("featuredRestaurant", featuredRestaurants.toString())
+                featuredRestaurantsList.addAll(featuredRestaurants)
+                // set adapter after retrieving the restaurants from the database
+                featuredrestaurantAdapter = FeaturedRestaurantAdapter(featuredRestaurantsList)
+                featuredrestaurantRV.adapter = featuredrestaurantAdapter
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w(TAG, "Failed to read value.", error.toException())
+            }
+        })
     }
+
+
+
+    private fun addRestaurantFromDB() {
+        restaurantRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                val restaurants = dataSnapshot.children.mapNotNull { snapshot ->
+                    val restaurant = snapshot.getValue(Restaurant::class.java)
+                    if (restaurant != null) {
+                        restaurant.restaurantId = snapshot.key.toString()
+                    }
+                    restaurant
+                }
+                restaurantsList.addAll(restaurants)
+                // set adapter after retrieving the restaurants from the database
+                restaurantAdapter = RestaurantAdapter(restaurantsList)
+                restaurantRV.adapter = restaurantAdapter
+            }
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w(TAG, "No restaurants in DB.", error.toException())
+                Toast.makeText(requireActivity(), "No Restaurants Available.", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+
 
 
     private fun foodRV_init(){
@@ -197,9 +261,9 @@ class Delivery : Fragment() , AdapterView.OnItemSelectedListener {
         foodList.add(Food(R.drawable.bakery,this.resources.getString(R.string.bakery)))
         foodList.add(Food(R.drawable.pizza,this.resources.getString(R.string.pizza)))
         foodList.add(Food(R.drawable.hamburger,this.resources.getString(R.string.hamburger)))
-
-
-
     }
 
 }
+
+
+

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginHorizontal="10dp">
+
+    <TableLayout
+        android:id="@+id/basket_dish_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <TableRow
+            tools:ignore="UselessParent">
+            <TextView
+                android:id="@+id/column_1"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/dishName"
+                android:textColor="@color/black"/>
+            <TextView
+                android:id="@+id/column_2"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:text="@string/dishQuantity"
+                android:gravity="center"
+                android:textColor="@color/black"/>
+            <TextView
+                android:id="@+id/column_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dishPrice"
+                android:gravity="end"
+                android:textColor="@color/black"/>
+        </TableRow>
+
+    </TableLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

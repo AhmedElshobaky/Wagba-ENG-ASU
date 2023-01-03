@@ -23,9 +23,9 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/mcdonalds_logo_504"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
+            android:src="@drawable/generic_restaurant"
 
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -37,9 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-
+            android:text="@string/generic_restaurant_name"
             android:gravity="top|start"
-            android:text="@string/mcdonalds"
             android:textColor="#000000"
             android:textSize="24sp"
             android:textStyle="bold"

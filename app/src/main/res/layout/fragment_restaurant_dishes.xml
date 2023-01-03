@@ -28,9 +28,9 @@
                 android:id="@+id/restaurantView"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_margin="8dp"
+                android:layout_margin="-5dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/mcdonalds_logo_504"
+                android:src="@drawable/ic_launcher_background"
                 tools:ignore="ImageContrastCheck" />
 
             <TextView
@@ -42,7 +42,6 @@
                 android:layout_marginTop="10dp"
 
                 android:gravity="top|start"
-                android:text="@string/mcdonalds"
                 android:textColor="#000000"
                 android:textSize="24sp"
                 android:textStyle="bold" />

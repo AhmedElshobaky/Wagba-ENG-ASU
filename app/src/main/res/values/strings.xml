@@ -1,9 +1,8 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Wagba</string>
     <!-- Login Page -->
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="forgotPassword"><u>Forgot Password?</u></string>
     <string name="login">Login</string>
     <string name="logintoregisterscreen"><u>Register now</u></string>
 
@@ -13,26 +12,13 @@
     <string name="confirmpassword">Confirm Password</string>
     <string name="register">Register</string>
     <string name="registertologinscreen"><u>Login now</u></string>
-
-    <!-- Delivery Page -->
+    <string name="registerPhone" tools:ignore="Typos">Phone (ex: 01x xxxx xxxx)</string>
 
     <!--  Restaurant in Delivery Page-->
+    <string name="welcomeUser">Welcome, %1$s!</string>
     <string name="featured">Featured Restaurants</string>
     <string name="restaurantsTxt">Restaurants and Coffee shops</string>
-    <string name="mcdonalds">McDonald\'s</string>
-    <string name="papajohns">Papa Johns</string>
-    <string name="starbucks">Starbucks</string>
-    <string name="sadam">Sadam fool &amp; falafel</string>
-    <string name="cilantro">Cilantro</string>
-    <string name="chickenfila">Chicken FilA</string>
-    <string name="kfc">KFC</string>
-    <string name="kosharyeltahrir">Koshary Tahrir</string>
-    <string name="zainelsham">Zain Elsham</string>
-    <string name="dunkindonuts">Dunkin Donuts</string>
-
-
-    <!--  Gate Spinner in Delivery Page -->
-    <string name="deliverTxt">Deliver to</string>
+    <string name="generic_restaurant_name">Restaurant</string>
 
     <!-- Food RecyclerView in Delivery Page -->
     <string name="foodCategories">Categories</string>
@@ -52,21 +38,18 @@
     <string name="basketBtn">Basket</string>
     <string name="priceStr">Price: </string>
 
-    <!-- Mcdonalds Dishes -->
-    <string name="mc_dish1">Share Box</string>
-    <string name="mc_dish2">Double Mc-Royal</string>
-    <string name="mc_dish3">Big Mac</string>
-    <string name="mc_dish4">Sunday</string>
-
     <!-- Navigation Bar -->
     <string name="deliveryBottomNav">Delivery</string>
     <string name="ordersBottomNav">Orders</string>
     <string name="settingsBottomNav">Settings</string>
 
     <!-- Basket Fragment -->
-    <string name="orderIdTxt">ORDER: XXXXXX</string>
-    <string name="restaurantNameBasketStr">Restaurant</string>
-    <string name="totalBasketStr">Total: </string>
+    <string name="usernameBasketStr">Username: %2$s</string>
+    <string name="restaurantBasketStr">Restaurant:  %1$s</string>
+    <string name="dishName">Dish Name</string>
+    <string name="dishPrice">%1$.2f EGP</string>
+    <string name="dishQuantity">%1$d</string>
+    <string name="totalBasketStr">Total: %1$.2f EGP</string>
     <string name="gateBasketStr">Choose a gate: </string>
     <string name="timeBasketStr">Choose time: </string>
     <string name="placeOrderBasketStr">Place Order</string>
@@ -81,26 +64,21 @@
     </string-array>
 
 
-    <string name="testRestaurantBasketStr">McDonald\'s</string>
-    <string name="testItemBasketStr">Item 1</string>
-    <string name="testPriceBasketStr"> 22.23 egp</string>
-
-    <string name="testItem2BasketStr">Item 2</string>
-    <string name="testPrice2BasketStr"> 99.12 egp</string>
-    <string name="testPrice3BasketStr">121.35 egp</string>
-
-    <string name="orderDetails">Order ID: XXXXXX\nTotal: 000.00 egp</string>
+    <string name="orderDetails">Order ID: %1$s\nTotal: %2$.2f EGP</string>
     <string name="placedOrder">placed</string>
     <string name="onDeliveryOrder">on delivery</string>
     <string name="deliveredOrder">delivered</string>
 
     <!-- Confirm password -->
     <string name="newusername">New Username</string>
-    <string name="confirmNewUser">Confirm Username</string>
+    <string name="confirmNewUser">Update Username</string>
     <string name="newPassword">New Password</string>
     <string name="confirmNewPassword">Confirm New Password</string>
     <string name="confirmPassword">Confirm Password</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Settings -->
+    <string name="newPhone">New phone number</string>
+    <string name="updatePhone">Update phone number</string>
+    <string name="logoutTxt">Logout</string>
+    <string name="updatePassword">Update password</string>
 </resources>

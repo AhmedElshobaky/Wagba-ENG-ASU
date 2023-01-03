@@ -1,3 +1,4 @@
 package com.example.wagba.restaurant
 
-data class Restaurant(val restaurantImg: Int, val restaurantName: String )
+import com.example.wagba.dish.Dish
+data class Restaurant(var restaurantId:String = "", val imgUrl: String = "", val Name: String = "Restaurant", val featured: Boolean = false, val featuredImg: String = "")

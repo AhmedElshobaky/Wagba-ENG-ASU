@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Order">
+    tools:context=".OrderFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -28,17 +28,23 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/orderRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="400dp"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="24dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/linearlayoutcorneredbg"
             android:padding="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/view"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ordersIcon">
+            app:layout_constraintTop_toBottomOf="@+id/ordersIcon"
+            app:layout_constraintVertical_bias="0.103">
 
         </androidx.recyclerview.widget.RecyclerView>
+
         <View
+            android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             app:layout_constraintBottom_toBottomOf="parent"

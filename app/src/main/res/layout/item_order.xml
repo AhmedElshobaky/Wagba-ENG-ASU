@@ -20,30 +20,30 @@
 
         <androidx.constraintlayout.utils.widget.ImageFilterView
             android:id="@+id/orderView"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/mcdonalds_logo_504"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="-5dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_launcher_background"
 
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ImageContrastCheck" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/orderDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-
-            android:gravity="top|start"
+            android:layout_margin="2dp"
             android:text="@string/orderDetails"
             android:textColor="#000000"
             android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/orderView"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/orderStatus"
