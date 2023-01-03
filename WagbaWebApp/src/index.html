@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wagba Orders</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type = "module" src = "index.js">
+    </script>
+</head>
+<body>
+    <h1>Wagba dashboard</h1>
+    <div id="restaurantsBtns">
+
+    </div>
+    <div id = 'Restaurant'>
+        <div class = "restaurantName">
+            <img 
+                id = "restaurantLogo"
+                src = "https://i.imgur.com/g87q8gs.jpg"
+                width="70" 
+                height="70"
+                alt="Restaurant icon" 
+            />
+            <h2 
+            id="restaurantText">
+                Restaurant Name
+            </h2>
+        </div>
+        <!-- take input order id and select its status between placed, on delivery or delivered-->
+        <div id = "orderStatus">
+            <input type="text" id="orderId" placeholder="Order ID">
+            <select id="statusSelector">
+                <option value="placed">placed</option>
+                <option value="on delivery">on delivery</option>
+                <option value="delivered">delivered</option>
+            </select>
+            <button id="changeStatusBtn">Change Status</button>
+        </div>
+        <div id = 'orders'>
+        </div>
+        </div>
+
+    </div>
+</body>
+</html>
